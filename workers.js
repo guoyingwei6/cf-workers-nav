@@ -2775,7 +2775,16 @@ export default {
                 
                 return response;
             } catch (e) {
-                return new Response(JSON.stringify({ valid: false, error: 'Auth failed' }), { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+                return new Response(JSON.stringify({ 
+                    valid: false, 
+                    error: 'Auth failed',
+                    debug: {
+                        error: e.message,
+                        hasAdminPassword: typeof env.ADMIN_PASSWORD !== 'undefined',
+                        hasJwtSecret: typeof env.JWT_SECRET !== 'undefined',
+                        pwdLength: env.ADMIN_PASSWORD ? env.ADMIN_PASSWORD.length : 0
+                    }
+                }), { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
             }
         }
 
