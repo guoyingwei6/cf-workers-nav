@@ -2,10 +2,6 @@ name = "cf-workers-nav"
 main = "workers.js"
 compatibility_date = "2024-09-01"
 
-[vars]
-ADMIN_PASSWORD = "cfnav"
-JWT_SECRET = "cfnav_jwt_secret_salt_9876543210"
-
 [[kv_namespaces]]
 binding = "CARD_ORDER"
 id = "424fb07d45004ccd8ccb964b19632e18"
